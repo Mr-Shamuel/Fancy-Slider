@@ -52,10 +52,11 @@ const selectItem = (event, img) => {
 
 
     let item = sliders.indexOf(img);
-    if (item === -1) {
+    if (item === -1) { //selecting images
         sliders.push(img);
 
     } else {
+        //unselecting images
         sliders.splice(item, 1);
         element.classList.remove('added');
 
