@@ -19,7 +19,14 @@
 }
 
 .added {
-    border: 2px solid #1e1743;
+    /* border: 2px solid #1e1743; */
+    border: 2px solid tomato;
+    border-radius: 5px;
+}
+
+.added2 {
+    /* border: 2px solid #1e1743; */
+    border: 2px solid none;
     border-radius: 5px;
 }
 

@@ -27,26 +27,37 @@ const showImages = (images) => {
 
     })
     document.getElementById("durationTitle").style.display = 'none';
+    Spinner();
 
 }
 
 const getImages = (query) => {
+
+
     fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
-        .then(response => response.json())
+
+    .then(response => response.json())
         .then(data => showImages(data.hits))
         .catch(err => console.log(err))
+    Spinner();
+
 }
+
 
 let slideIndex = 0;
 const selectItem = (event, img) => {
     let element = event.target;
     element.classList.add('added');
+    element.classList.add('added2');
+
 
     let item = sliders.indexOf(img);
     if (item === -1) {
         sliders.push(img);
+
     } else {
-        alert('Hey, Already added !')
+        sliders.splice(item, 1);
+        element.classList.remove('added');
 
     }
 }
@@ -54,10 +65,12 @@ var timer
 const createSlider = () => {
     // check slider image length
     if (sliders.length < 2) {
+
         alert('Select at least 2 image.')
         return;
     }
     // crate slider previous next area
+
     sliderContainer.innerHTML = '';
     const prevNext = document.createElement('div');
     prevNext.className = "prev-next d-flex w-100 justify-content-between align-items-center";
@@ -131,10 +144,16 @@ searchBtn.addEventListener('click', function() {
     const search = document.getElementById('search');
     getImages(search.value)
     sliders.length = 0;
+
+
+
+
 })
 
 sliderBtn.addEventListener('click', function() {
     createSlider()
+
+
 })
 
 
@@ -144,7 +163,9 @@ document.getElementById("search").addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
         event.preventDefault();
         document.getElementById("search-btn").click();
+
     }
+
 });
 
 //for create slider
@@ -154,3 +175,10 @@ document.getElementById("duration").addEventListener("keyup", function(event) {
         document.getElementById("create-slider").click();
     }
 });
+
+
+// spinner 
+const Spinner = () => {
+    const spin = document.getElementById('loading-spinner');
+    spin.classList.toggle('d-none');
+}
