@@ -1,2 +1,2 @@
 # Fancy-Slider
-https://mr-shamuel.github.io/Fancy-Slider/
+Live Server: https://mr-shamuel.github.io/Fancy-Slider/
